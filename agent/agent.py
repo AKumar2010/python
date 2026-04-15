@@ -1,10 +1,10 @@
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import AIMessagePromptTemplate, PromptTemplate
 from langchain_openai import ChatOpenAI
+from langchain.tools import tool
 from dotenv import load_dotenv
 
 
-llm=None
 def get_llm_output():
     load_dotenv()
 
@@ -25,6 +25,13 @@ def get_llm_output():
     print("prompt is: ",myprompt)
     info=llm.invoke(myprompt)
     print(info.content)
+
+@tool
+def create_test_cases():
+    """This tool create test case from a given refrenced document.
+      If a format is provided then it will create testCases in thst format."""
+
+
 
 
 

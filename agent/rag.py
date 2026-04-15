@@ -7,12 +7,14 @@ from langchain_core.documents import Document
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_classic.chains.retrieval import create_retrieval_chain
 from langchain_core.prompts import ChatPromptTemplate
+from utils.utility import load_apiKey
 from model import LlmModel
 import os
 
 class Embedding:
 
     def create_embedding(self):
+        load_apiKey()
         embedding=OpenAIEmbeddings(model='text-embedding-3-small')
         return embedding
 
@@ -69,7 +71,7 @@ class RagStuff:
     def tryRag(self):
         userinput= input("enter your topic to search from documets..")
         retriever = VectorDb().getChromaDBInstance().as_retriever()
-        doc_chain=create_stuff_documents_chain(LlmModel,self.template)
+        doc_chain=create_stuff_documents_chain(LlmModel().get_llm(),self.template)
         retieval_chain= create_retrieval_chain(retriever,doc_chain)
         response=retieval_chain.invoke({"input":userinput,"context":self.context})
         print(response.get('answer')) 

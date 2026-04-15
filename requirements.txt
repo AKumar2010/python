@@ -6,3 +6,4 @@ python-dotenv
 pypdf
 chromadb 
 langchain-chroma
+beautifulsoup4 == 4.14.3
