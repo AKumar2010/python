@@ -57,4 +57,8 @@ A Retrieval-Augmented Generation (RAG) based Question Answering agent that proce
 - chromadb
 - pypdf
 - python-dotenv
+<<<<<<< HEAD
 - beautifulsoup4
+=======
+- beautifulsoup4
+>>>>>>> c1aa2f9 (rag output)
